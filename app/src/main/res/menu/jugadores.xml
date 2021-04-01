@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/jug1"
+        android:title="1 Jug."
+        />
+
+    <item
+        android:id="@+id/jug2"
+        android:title="Hasta 2"
+        />
+    <item
+        android:id="@+id/jug3"
+        android:title="Hasta 3"
+        />
+
+    <item
+        android:id="@+id/jug4"
+        android:title="Hasta 4"
+        />
+
+    <item
+        android:id="@+id/jug5"
+        android:title="Hasta 5"
+        />
+
+    <item
+        android:id="@+id/jug6"
+        android:title="Hasta 6"
+        />
+    <item
+        android:id="@+id/jug7"
+        android:title="Hasta 7"
+        />
+
+    <item
+        android:id="@+id/jug8"
+        android:title="Hasta 8"
+        />
+    <item
+        android:id="@+id/jug9"
+        android:title="Más de 8"
+        />
+
+
+
+</menu>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/solitario"
+        android:title="Solitario"
+        />
+
+    <item
+        android:id="@+id/party"
+        android:title="Party"
+        />
+    <item
+        android:id="@+id/roll"
+        android:title="Roll"
+        />
+
+    <item
+        android:id="@+id/eurogame"
+        android:title="Eurogame"
+        />
+
+    <item
+        android:id="@+id/ameritrash"
+        android:title="Ameritrash"
+        />
+
+    <item
+        android:id="@+id/filler"
+        android:title="Filler"
+        />
+    <item
+        android:id="@+id/roll_and_write"
+        android:title="Roll &amp; Write"
+        />
+
+    <item
+        android:id="@+id/cooperativo"
+        android:title="Cooperativo"
+        />
+
+</menu>

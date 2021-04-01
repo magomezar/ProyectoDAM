@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Lets Play</string>
+
+    <string-array name="categorias">
+        <item>Categorías</item>
+        <item>Ameritrash</item>
+        <item>Cooperativo</item>
+        <item>Eurogame</item>
+        <item>Filler</item>
+        <item>Party</item>
+        <item>Roll</item>
+        <item>Roll and Write</item>
+        <item>Solitario</item>
+    </string-array>
+
+    <string-array name="jugadores">
+        <item>Jugadores</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>+8</item>
+    </string-array>
+
+    <string-array name="duracion">
+        <item>Duración</item>
+        <item>0-15 Min</item>
+        <item>15-30 Min</item>
+        <item>30-60 Min</item>
+        <item>60-120 Min</item>
+        <item>120-180 Min</item>
+        <item>180-240 Min</item>
+        <item>+240 Min</item>
+    </string-array>
+
+
+
+</resources>

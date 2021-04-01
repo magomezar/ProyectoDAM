@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.proyecto">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_letsplay"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_letsplay_round"
+        android:supportsRtl="true"
+        android:theme="@style/Base.MyTheme">
+        <activity android:name=".notas"></activity>
+        <activity android:name=".editoriales" />
+        <activity android:name=".autores" />
+        <activity android:name=".partidas" />
+        <activity android:name=".deseos" />
+        <activity android:name=".juegos" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
