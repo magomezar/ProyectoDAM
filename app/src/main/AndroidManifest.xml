@@ -15,7 +15,9 @@
         <activity android:name=".partidas" />
         <activity android:name=".deseos" />
         <activity android:name=".juegos" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/Splash"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,4 +6,209 @@
     android:layout_height="match_parent"
     tools:context=".partidas">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_vguide10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_vguide90"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_hguide90"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/partidas_lista"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/partidas_formulario">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/partidas_posibles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amaranth_bold_italic"
+        android:paddingBottom="10dp"
+        android:text="Juegos posibles"
+        android:textColor="@color/color_primary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/partidas_lista"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/partidas_formulario"
+
+        >
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/partidas_formulario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/partidas_posibles"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/partidas_encabezado">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/partidas_tiempo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Tiempo de Juego"
+            android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintBottom_toTopOf="@id/partidas_buscar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/partidas_tiempo_in"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:importantForAutofill="no" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/partidas_buscar"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:text="buscar"
+            android:textAllCaps="true"
+
+            app:cornerRadius="10dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/partidas_numero"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Número de Jugadores"
+            android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintBottom_toTopOf="@id/partidas_tiempo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/partidas_numero_in"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:importantForAutofill="no" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/partidas_encabezado"
+        android:layout_width="331dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toTopOf="@id/partidas_formulario"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@+id/main_vguide10"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/partidas_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="31dp"
+            android:contextClickable="true"
+            app:cornerRadius="25dp"
+            app:icon="@drawable/ic_baseline_arrow_left_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/partidas_titulo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/partidas_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth_bold_italic"
+            android:text="Partidas"
+            android:textAllCaps="false"
+            android:textColor="@color/color_primary"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/partidas_icono"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="249dp"
+            android:src="@mipmap/ic_activity_icon_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

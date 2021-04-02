@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9"/>
+        app:layout_constraintGuide_percent="0.96"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/autores_info"
@@ -54,5 +54,135 @@
         app:cornerRadius="10dp"
         app:strokeWidth="2dp"
         app:strokeColor="@color/black"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/autores_lista"
+        android:layout_width="0dp"
+        android:layout_height="189dp"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintTop_toBottomOf="@+id/autores_juegos">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/autores_juegos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/amaranth_bold_italic"
+        android:paddingBottom="10dp"
+        android:text="Juegos"
+        android:textColor="@color/color_primary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/autores_lista"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/autores_buscar">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/autores_buscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="247dp"
+        android:layout_marginEnd="71dp"
+        android:text="buscar"
+        android:textAllCaps="true"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/autores_juegos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autores_nombre"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/autores_nombre"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="60dp"
+        android:hint="Nombre"
+        android:textColorHint="@color/color_primary"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        app:boxStrokeColor="@color/color_primary"
+        app:boxStrokeWidth="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/autores_juegos"
+        app:layout_constraintEnd_toEndOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/autores_encabezado">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/autores_nombre_in"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/autores_encabezado"
+        android:layout_width="331dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/autores_nombre"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@+id/main_vguide10"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/autores_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="31dp"
+            android:contextClickable="true"
+            app:cornerRadius="25dp"
+            app:icon="@drawable/ic_baseline_arrow_left_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/autores_titulo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/autores_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth_bold_italic"
+            android:text="Autores"
+            android:textAllCaps="false"
+            android:textColor="@color/color_primary"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/autores_icono"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="249dp"
+            android:src="@mipmap/ic_activity_icon_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

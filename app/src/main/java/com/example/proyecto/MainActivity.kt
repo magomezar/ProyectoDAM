@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setTheme(R.style.Base_MyTheme)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -20,19 +21,17 @@ class MainActivity : AppCompatActivity() {
         binding.mainGuardarJuegos.setOnClickListener{
             val intent= Intent(this,juegos::class.java)
             startActivity(intent)
-            //Toast de entrada a la activity2
-            val toast= Toast.makeText(this, "¡Bienvenido a Juegos!", Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 600)
-            toast.show()
         }
 
         binding.mainDeseos.setOnClickListener {
             val intent= Intent(this,deseos::class.java)
             startActivity(intent)
-            //Toast de entrada a la activity2
-            val toast= Toast.makeText(this, "¡PRUEBAS!", Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 600)
-            toast.show()
+        }
+
+        binding.mainPartidas.setOnClickListener {
+            val intent= Intent(this,notas::class.java)
+            startActivity(intent)
+
         }
 
 

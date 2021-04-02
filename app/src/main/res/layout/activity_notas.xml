@@ -25,20 +25,148 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9"/>
+        app:layout_constraintGuide_percent="0.96" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/notas_borrar"
-        android:layout_marginTop="10dp"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
-        app:layout_constraintStart_toEndOf="@id/main_vguide10"
-        app:layout_constraintEnd_toStartOf="@+id/main_vguide90"
         android:text="borrar"
         android:textAllCaps="true"
         app:cornerRadius="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"/>
+        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
+        app:layout_constraintEnd_toStartOf="@+id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/notas_vista"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/notas_vista"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintTop_toBottomOf="@+id/notas_lista">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/notas_lista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/amaranth_bold_italic"
+        android:paddingBottom="10dp"
+        android:text="Notas"
+        android:textColor="@color/color_primary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/notas_vista"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/notas_agregar">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/notas_agregar"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="agregar nota"
+        android:textAllCaps="true"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/notas_lista"
+        app:layout_constraintTop_toBottomOf="@+id/notas_formulario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/notas_formulario"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/notas_agregar"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/notas_nombre">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/notas_nombre"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/notas_formulario"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/notas_encabezado">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/notas_encabezado"
+        android:layout_width="331dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/notas_nombre"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@+id/main_vguide10"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/notas_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="31dp"
+            android:contextClickable="true"
+            app:cornerRadius="25dp"
+            app:icon="@drawable/ic_baseline_arrow_left_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/notas_titulo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/notas_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth_bold_italic"
+            android:text="Notas"
+            android:textAllCaps="false"
+            android:textColor="@color/color_primary"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/notas_icono"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="249dp"
+            android:src="@mipmap/ic_activity_icon_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

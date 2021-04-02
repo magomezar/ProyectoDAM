@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/muy_alta"
+        android:title="Muy alta"
+        />
+
+    <item
+        android:id="@+id/alta"
+        android:title="Alta"
+        />
+    <item
+        android:id="@+id/media"
+        android:title="Media"
+        />
+
+    <item
+        android:id="@+id/baja"
+        android:title="Baja"
+        />
+
+    <item
+        android:id="@+id/muy_baja"
+        android:title="Muy baja"
+        />
+
+</menu>

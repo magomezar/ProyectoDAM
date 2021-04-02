@@ -29,41 +29,44 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/main_deseos"
-        android:layout_marginTop="10dp"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
-        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        android:layout_marginTop="5dp"
         android:text="lista de deseos"
         android:textAllCaps="true"
         app:cornerRadius="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"/>
+        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
+        app:layout_constraintEnd_toStartOf="@+id/main_partidas"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/main_vista"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/main_partidas"
-        android:layout_marginTop="10dp"
         android:layout_width="150dp"
         android:layout_height="60dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="5dp"
+        android:text="partidas"
+        android:textAllCaps="true"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@id/main_hguide90"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
-        android:textAllCaps="true"
-        android:text="partidas"
-        app:cornerRadius="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"/>
+        app:layout_constraintStart_toEndOf="@+id/main_deseos"
+        app:layout_constraintTop_toBottomOf="@+id/main_vista"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_vista"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="189dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
         android:layout_marginBottom="65dp"
         app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintTop_toBottomOf="@+id/main_opciones">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,51 +74,52 @@
         android:id="@+id/main_opciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/main_vista"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toEndOf="@id/main_vguide10"
-        app:layout_constraintBottom_toTopOf="@id/main_vista">
+        app:layout_constraintTop_toBottomOf="@+id/main_guardar_juegos">
 
         <Button
             android:id="@+id/main_juegos"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_on_primary"
             android:backgroundTint="@color/color_primary"
             android:text="juego"
-            tools:layout_editor_absoluteX="153dp"
-            tools:layout_editor_absoluteY="332dp"
+            android:textColor="@color/color_on_primary"
             app:cornerRadius="10dp"
+            app:strokeColor="@color/black"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/black"/>
+            tools:layout_editor_absoluteX="153dp"
+            tools:layout_editor_absoluteY="332dp" />
 
-    <Button
-        android:id="@+id/main_autores"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="112dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_on_primary"
-        android:backgroundTint="@color/color_primary"
-        android:text="autor"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="332dp"
-        app:cornerRadius="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"/>
+        <Button
+            android:id="@+id/main_autores"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_primary"
+            android:text="autor"
+            android:textColor="@color/color_on_primary"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="332dp" />
 
         <Button
             android:id="@+id/main_editoriales"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_on_primary"
             android:backgroundTint="@color/color_primary"
             android:text="editorial"
-            tools:layout_editor_absoluteX="258dp"
-            tools:layout_editor_absoluteY="332dp"
+            android:textColor="@color/color_on_primary"
             app:cornerRadius="10dp"
+            app:strokeColor="@color/black"
             app:strokeWidth="2dp"
-            app:strokeColor="@color/black"/>
+            tools:layout_editor_absoluteX="258dp"
+            tools:layout_editor_absoluteY="332dp" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -123,14 +127,15 @@
         android:id="@+id/main_guardar_juegos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/main_opciones"
-        app:layout_constraintStart_toEndOf="@id/main_vguide10"
-        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
-        android:textAllCaps="true"
         android:text="añadir juegos"
+        android:textAllCaps="true"
         app:cornerRadius="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"/>
+        app:layout_constraintBottom_toTopOf="@id/main_opciones"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/main_profile_image"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:padding="10dp"

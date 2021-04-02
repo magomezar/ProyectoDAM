@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/main_vguide10"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/juegos_encabezado">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/juegos_notas"
@@ -91,6 +91,10 @@
             android:layout_marginBottom="10dp"
             android:hint="Categorías"
             android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeColor="@color/color_primary"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@+id/juegos_guardar"
@@ -107,20 +111,25 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/juegos_jugadores"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="100dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="209dp"
+            android:layout_marginEnd="200dp"
             android:layout_marginBottom="5dp"
             android:hint="Jugadores"
             android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeColor="@color/color_primary"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@+id/juegos_categorias"
@@ -137,21 +146,26 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/juegos_duracion"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="69dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:hint="Duración"
             android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeColor="@color/color_primary"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@+id/juegos_categorias"
@@ -168,7 +182,8 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -182,6 +197,10 @@
             android:layout_marginBottom="5dp"
             android:hint="Editorial"
             android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeColor="@color/color_primary"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/juegos_jugadores"
@@ -207,6 +226,10 @@
             android:layout_marginBottom="5dp"
             android:hint="Autor"
             android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeColor="@color/color_primary"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/juegos_editorial"
@@ -232,6 +255,10 @@
             android:layout_marginBottom="5dp"
             android:hint="Nombre"
             android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeColor="@color/color_primary"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/juegos_autor"
@@ -247,33 +274,42 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/juegos_imagen"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_width="313dp"
+            android:layout_height="137dp"
             android:src="@drawable/ic_baseline_image_search_24"
             app:layout_constraintBottom_toTopOf="@id/juegos_nombre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/juegos_titulo">
+            app:layout_constraintTop_toTopOf="parent">
+
         </androidx.appcompat.widget.AppCompatImageView>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/juegos_encabezado"
+        android:layout_width="331dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/juegos_cuadro"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@+id/main_vguide10"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/juegos_back"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="31dp"
             android:contextClickable="true"
-
             app:cornerRadius="25dp"
             app:icon="@drawable/ic_baseline_arrow_left_24"
-            app:layout_constraintBottom_toTopOf="@id/juegos_imagen"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/juegos_titulo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp">
-
 
         </com.google.android.material.button.MaterialButton>
 
@@ -287,7 +323,7 @@
             android:textAllCaps="false"
             android:textColor="@color/color_primary"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@id/juegos_imagen"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -300,15 +336,12 @@
             android:layout_height="80dp"
             android:layout_marginStart="249dp"
             android:src="@mipmap/ic_activity_icon_foreground"
-
-            app:layout_constraintBottom_toTopOf="@id/juegos_imagen"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </androidx.appcompat.widget.AppCompatImageView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,52 +11,266 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.1"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_vguide90"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.9"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_hguide90"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.96" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="120dp"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/deseos_borrar"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="250dp"
-        android:layout_marginBottom="172dp"
-        android:hint="Hello"
-        android:textColorHint="@color/color_primary"
-        app:boxCornerRadiusBottomEnd="25dp"
-        app:boxStrokeColor="@color/color_primary"
-        app:boxStrokeWidth="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="borrar"
+        android:textAllCaps="true"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
+        app:layout_constraintEnd_toStartOf="@+id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/deseos_vista"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deseos_vista"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintTop_toBottomOf="@+id/deseos_lista">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/deseos_lista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/amaranth_bold_italic"
+        android:paddingBottom="10dp"
+        android:text="Lista de Deseos"
+        android:textColor="@color/color_primary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/deseos_vista"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/deseos_formulario">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deseos_formulario"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/deseos_lista"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/deseos_encabezado">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/deseos_prioridad"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Prioridad"
+            android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deseos_editorial"
+            app:layout_constraintEnd_toStartOf="@id/deseos_añadir"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/deseos_prioridad_in"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deseos_añadir"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="añadir"
+            android:textAllCaps="true"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deseos_editorial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.797"
+            app:layout_constraintStart_toEndOf="@+id/deseos_prioridad"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/deseos_editorial"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Editorial"
+            android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintBottom_toTopOf="@id/deseos_prioridad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deseos_autor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/deseos_editorial_in"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/deseos_autor"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Autor"
+            android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintBottom_toTopOf="@id/deseos_editorial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deseos_juego">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/deseos_autor_in"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/deseos_juego"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Juego"
+            android:textColorHint="@color/color_primary"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintBottom_toTopOf="@id/deseos_autor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/deseos_juego_in"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deseos_encabezado"
+        android:layout_width="331dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@id/deseos_formulario"
+        app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@+id/main_vguide10"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/prueba"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:importantForAutofill="no" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deseos_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="31dp"
+            android:contextClickable="true"
+            app:cornerRadius="25dp"
+            app:icon="@drawable/ic_baseline_arrow_left_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/deseos_titulo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.button.MaterialButton>
 
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/deseos_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth_bold_italic"
+            android:text="Deseos"
+            android:textAllCaps="false"
+            android:textColor="@color/color_primary"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/deseos_icono"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="249dp"
+            android:src="@mipmap/ic_activity_icon_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
