@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_letsplay_round"
         android:supportsRtl="true"
         android:theme="@style/Base.MyTheme">
-        <activity android:name=".notas"></activity>
-        <activity android:name=".editoriales" />
-        <activity android:name=".autores" />
-        <activity android:name=".partidas" />
-        <activity android:name=".deseos" />
-        <activity android:name=".juegos" />
+        <activity android:name=".Notas"></activity>
+        <activity android:name=".Editoriales" />
+        <activity android:name=".Autores" />
+        <activity android:name=".Partidas" />
+        <activity android:name=".Deseos" />
+        <activity android:name=".Juegos" />
         <activity android:name=".MainActivity"
             android:theme="@style/Splash"
             >

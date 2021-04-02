@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".autores">
+    tools:context=".Autores">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_vguide10"
@@ -29,17 +29,20 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/autores_info"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
-        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="80dp"
         android:text="info"
         android:textAllCaps="true"
         app:cornerRadius="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"/>
+        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
+        app:layout_constraintEnd_toStartOf="@+id/autores_notas"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/autores_lista"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/autores_notas"
@@ -47,8 +50,10 @@
         android:layout_marginEnd="30dp"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/autores_lista"
         app:layout_constraintBottom_toTopOf="@id/main_hguide90"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toEndOf="@+id/autores_info"
         android:textAllCaps="true"
         android:text="notas"
         app:cornerRadius="10dp"

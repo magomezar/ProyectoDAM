@@ -68,6 +68,18 @@
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintTop_toBottomOf="@+id/main_opciones">
 
+      <fragment
+          android:layout_margin="20dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          android:name="com.example.proyecto.MainFragment"
+          tools:layout="@layout/fragment_main"
+          />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButtonToggleGroup
@@ -81,7 +93,7 @@
 
         <Button
             android:id="@+id/main_juegos"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/color_primary"
@@ -95,7 +107,7 @@
 
         <Button
             android:id="@+id/main_autores"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/color_primary"
@@ -109,7 +121,7 @@
 
         <Button
             android:id="@+id/main_editoriales"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/color_primary"

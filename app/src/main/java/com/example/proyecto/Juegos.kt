@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import com.example.proyecto.databinding.ActivityJuegosBinding
 
-class juegos : AppCompatActivity() {
+class Juegos : AppCompatActivity() {
 
     private lateinit var binding: ActivityJuegosBinding
     override fun onCreate(savedInstanceState: Bundle?) {

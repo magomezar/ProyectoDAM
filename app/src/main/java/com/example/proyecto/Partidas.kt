@@ -7,7 +7,7 @@ import android.widget.EditText
 import androidx.appcompat.widget.PopupMenu
 import com.example.proyecto.databinding.ActivityPartidasBinding
 
-class partidas : AppCompatActivity() {
+class Partidas : AppCompatActivity() {
 
     private lateinit var binding: ActivityPartidasBinding
     override fun onCreate(savedInstanceState: Bundle?) {

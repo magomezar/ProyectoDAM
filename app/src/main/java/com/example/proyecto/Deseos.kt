@@ -3,22 +3,23 @@ package com.example.proyecto
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.*
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.lifecycleScope
-import com.example.proyecto.databinding.ActivityMainBinding
+import com.example.proyecto.databinding.ActivityDeseosBinding
 import com.example.proyecto.db.AppDataBase
 import com.example.proyecto.db.entities.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivity : AppCompatActivity() {
+class Deseos : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityDeseosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setTheme(R.style.Base_MyTheme)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityDeseosBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val nota2 = Nota("Que juego mas feo")
 
         val juego1 = Juego("FOTICO","Terraforming","3 horas","Eurogame","Hasta 5",1,1,1)
-        val juego2 = Juego("FOTAZA","Last Bastion","2 horas","Eurogame","Hasta 4",1,1,1)
+        val juego2 = Juego("FOTAZA","Last Bastion","2 horas","Eurogame","Hasta 4",1,2,2)
 
         lifecycleScope.launch{
             withContext(Dispatchers.IO){
@@ -52,38 +53,47 @@ class MainActivity : AppCompatActivity() {
                 dbDes.juegoDao().insert(juego1)
                 dbDes.juegoDao().insert(juego2)
 
-                val lista = mutableListOf(dbDes.editorialDao().mostrarJuegosPorEditorial(1))
+                val lista = mutableListOf(dbDes.autorDao().mostrarJuegosPorAutor(1))
                 lista.forEach {
-                    println(it)
-                }
-/*                val lista2 = mutableListOf(dbDes.notaDao().mostrarNotasPorJuego(1))
-                lista2.forEach {
-                    println(it)
-                }*/
-                val lista3 = mutableListOf(dbDes.autorDao().mostrarJuegosPorAutor(1))
-                lista3.forEach {
                     println(it)
                 }
 
             }
         }
 
-        binding.mainGuardarJuegos.setOnClickListener{
-            val intent= Intent(this,Juegos::class.java)
+        //Vuelta a la pantalla principal
+        binding.deseosBack.setOnClickListener {
+            val intent= Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
 
-        binding.mainDeseos.setOnClickListener {
-            val intent= Intent(this,Deseos::class.java)
-            startActivity(intent)
+        //Desplegable de prioridades
+        binding.deseosPrioridadIn.setOnClickListener {
+            val prioridad = findViewById<EditText>(R.id.deseos_prioridad_in)
+            PopupMenu(this, prioridad).apply {
+                menuInflater.inflate(R.menu.prioridad, menu)
+                setOnMenuItemClickListener { item ->
+                    prioridad.setText(item.title)
+                    true
+                }
+                show()
+            }
         }
 
-        binding.mainPartidas.setOnClickListener {
-            val intent= Intent(this,Notas::class.java)
-            startActivity(intent)
 
-        }
 
+
+        /*val editText = findViewById<EditText>(R.id.prueba)
+        editText.setOnClickListener {
+            PopupMenu(this, editText).apply {
+                menuInflater.inflate(R.menu.categorias, menu)
+                setOnMenuItemClickListener { item ->
+                    editText.setText(item.title)
+                    true
+                }
+                show()
+            }
+        }*/
 
     }
 }

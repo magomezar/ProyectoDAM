@@ -3,21 +3,23 @@ package com.example.proyecto
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.proyecto.databinding.ActivityEditorialesBinding
+import com.example.proyecto.databinding.ActivityNotasBinding
 
-class editoriales : AppCompatActivity() {
+class Notas : AppCompatActivity() {
 
-    private lateinit var binding: ActivityEditorialesBinding
+    private lateinit var binding: ActivityNotasBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityEditorialesBinding.inflate(layoutInflater)
+        binding = ActivityNotasBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        binding.editorialesBack.setOnClickListener {
+        //Boton vuelta a pantalla principal
+        binding.notasBack.setOnClickListener {
             val intent= Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
+
     }
 }

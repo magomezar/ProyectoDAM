@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.proyecto.databinding.ActivityAutoresBinding
 
-class autores : AppCompatActivity() {
+class Autores : AppCompatActivity() {
 
     private lateinit var binding: ActivityAutoresBinding
     override fun onCreate(savedInstanceState: Bundle?) {
