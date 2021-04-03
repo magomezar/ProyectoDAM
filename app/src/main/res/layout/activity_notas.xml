@@ -42,15 +42,14 @@
         app:strokeWidth="2dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/color_surface"
         android:id="@+id/notas_vista"
         android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginBottom="65dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
+        app:layout_constraintBottom_toTopOf="@+id/notas_borrar"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
-        app:layout_constraintTop_toBottomOf="@+id/notas_lista">
+        app:layout_constraintTop_toBottomOf="@+id/notas_lista"
+        android:background="@drawable/borde">
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -88,7 +87,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/notas_formulario"
-        android:background="@color/color_surface"
         android:layout_width="0dp"
         android:layout_height="140dp"
         android:layout_marginBottom="10dp"
@@ -96,7 +94,7 @@
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/notas_nombre">
-
+        android:background="@drawable/borde"
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

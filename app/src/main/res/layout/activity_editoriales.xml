@@ -63,7 +63,8 @@
         app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
-        app:layout_constraintTop_toBottomOf="@+id/main_opciones">
+        app:layout_constraintTop_toBottomOf="@+id/main_opciones"
+        android:background="@drawable/borde">
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textview.MaterialTextView

@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.mainPartidas.setOnClickListener {
-            val intent= Intent(this,Notas::class.java)
+            val intent= Intent(this,Partidas::class.java)
             startActivity(intent)
 
         }

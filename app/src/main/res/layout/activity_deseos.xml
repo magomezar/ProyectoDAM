@@ -44,19 +44,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/deseos_vista"
         android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="65dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
-        app:layout_constraintStart_toStartOf="@id/main_vguide10"
+        android:layout_height="130dp"
+
+        android:background="@drawable/borde"
+        app:layout_constraintBottom_toTopOf="@+id/deseos_borrar"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
+        app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/deseos_lista">
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/deseos_lista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/amaranth_bold_italic"
         android:paddingBottom="10dp"
         android:text="Lista de Deseos"
@@ -65,8 +67,7 @@
         app:layout_constraintBottom_toTopOf="@+id/deseos_vista"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toEndOf="@id/main_vguide10"
-        app:layout_constraintTop_toBottomOf="@+id/deseos_formulario">
-    </com.google.android.material.textview.MaterialTextView>
+        app:layout_constraintTop_toBottomOf="@+id/deseos_formulario"></com.google.android.material.textview.MaterialTextView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/deseos_formulario"
@@ -219,7 +220,7 @@
         android:id="@+id/deseos_encabezado"
         android:layout_width="331dp"
         android:layout_height="84dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@id/deseos_formulario"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toEndOf="@+id/main_vguide10"

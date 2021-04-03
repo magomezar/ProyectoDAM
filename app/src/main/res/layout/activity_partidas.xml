@@ -35,7 +35,8 @@
         app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
-        app:layout_constraintTop_toBottomOf="@+id/partidas_formulario">
+        app:layout_constraintTop_toBottomOf="@+id/partidas_formulario"
+        android:background="@drawable/borde">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -158,6 +159,7 @@
         android:id="@+id/partidas_encabezado"
         android:layout_width="331dp"
         android:layout_height="84dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@id/partidas_formulario"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toEndOf="@+id/main_vguide10"
@@ -167,7 +169,7 @@
             android:id="@+id/partidas_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="31dp"
+            android:layout_marginEnd="20dp"
             android:contextClickable="true"
             app:cornerRadius="25dp"
             app:icon="@drawable/ic_baseline_arrow_left_24"
