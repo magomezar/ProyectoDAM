@@ -84,7 +84,7 @@ class Juegos : AppCompatActivity() {
                 val toast= Toast.makeText(this, "¡Todos los campos deben estar cubiertos!", Toast.LENGTH_LONG)
                 toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 600)
                 toast.show()
-                //binding.juegosEditorial.error ="Todos los campos deben estar cubiertos"
+                binding.juegosEditorial.error ="Todos los campos deben estar cubiertos"
                 return@setOnClickListener
             }
 

@@ -3,6 +3,7 @@ package com.example.proyecto
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.proyecto.databinding.ActivityMainBinding
 import com.example.proyecto.db.AppDataBase
@@ -13,6 +14,9 @@ import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
+    var juegosFragment = JuegosFragment()
+    var autoresFragment = AutorFragment()
+    var editorialesFragment = EditorialFragment()
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +27,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         val dbDes = AppDataBase.newdb(this)
+        cambiarFragment(juegosFragment)
 
-        val deseo1 = Deseo("alta","atrapa la caca","Devir","Cacotas")
+        binding.mainJuegos.setOnClickListener{
+            cambiarFragment(juegosFragment)
+        }
+
+        binding.mainAutores.setOnClickListener{
+            cambiarFragment(autoresFragment)
+        }
+
+        binding.mainEditoriales.setOnClickListener{
+            cambiarFragment(editorialesFragment)
+        }
+
+
+
+        /*val deseo1 = Deseo("alta","atrapa la caca","Devir","Cacotas")
         val deseo2 = Deseo("muy alta","Terraforming","Maldito","Frixelius")
 
         val autor1 = Autor("Frixelius")
@@ -56,17 +75,17 @@ class MainActivity : AppCompatActivity() {
                 lista.forEach {
                     println(it)
                 }
-/*                val lista2 = mutableListOf(dbDes.notaDao().mostrarNotasPorJuego(1))
+*//*                val lista2 = mutableListOf(dbDes.notaDao().mostrarNotasPorJuego(1))
                 lista2.forEach {
                     println(it)
-                }*/
+                }*//*
                 val lista3 = mutableListOf(dbDes.autorDao().mostrarJuegosPorAutor(1))
                 lista3.forEach {
                     println(it)
                 }
 
             }
-        }
+        }*/
 
         binding.mainGuardarJuegos.setOnClickListener{
             val intent= Intent(this,Juegos::class.java)
@@ -85,5 +104,11 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+    private fun cambiarFragment(fragment: Fragment){
+        val cambioFragment = supportFragmentManager.beginTransaction()
+        cambioFragment.replace(R.id.main_contenedor, fragment)
+        cambioFragment.addToBackStack(null)
+        cambioFragment.commit()
     }
 }
