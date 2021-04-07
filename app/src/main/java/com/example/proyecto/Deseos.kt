@@ -34,11 +34,11 @@ class Deseos : AppCompatActivity() {
         val editorial1 = Editorial("Maldito")
         val editorial2 = Editorial("Devir")
 
-        val nota1 = Nota("Me encata, muy bonito")
-        val nota2 = Nota("Que juego mas feo")
+        val nota1 = Nota("Me encanta, muy bonito",1)
+        val nota2 = Nota("Que juego mas feo",1)
 
-        val juego1 = Juego("FOTICO","Terraforming","3 horas","Eurogame","Hasta 5",1,1,1)
-        val juego2 = Juego("FOTAZA","Last Bastion","2 horas","Eurogame","Hasta 4",1,2,2)
+        val juego1 = Juego("FOTICO","Terraforming","3 horas","Eurogame","Hasta 5",1,1)
+        val juego2 = Juego("FOTAZA","Last Bastion","2 horas","Eurogame","Hasta 4",1,2)
 
         lifecycleScope.launch{
             withContext(Dispatchers.IO){

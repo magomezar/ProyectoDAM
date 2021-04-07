@@ -3,14 +3,24 @@ package com.example.proyecto
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
+import androidx.lifecycle.lifecycleScope
 import com.example.proyecto.databinding.ActivityJuegosBinding
+import com.example.proyecto.db.AppDataBase
+import com.example.proyecto.db.entities.Autor
+import com.example.proyecto.db.entities.Editorial
+import com.example.proyecto.db.entities.Juego
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class Juegos : AppCompatActivity() {
 
+    private val TAG="MAIN_ACTIVITY"
     private lateinit var binding: ActivityJuegosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +28,8 @@ class Juegos : AppCompatActivity() {
         binding = ActivityJuegosBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        val dbDes = AppDataBase.newdb(this)
 
         //Boton vuelta a pantalla principal
         binding.juegosBack.setOnClickListener {
@@ -64,36 +76,62 @@ class Juegos : AppCompatActivity() {
             }
         }
 
-        //Aviso de campos vacios
+        //Guardar juego
         binding.juegosGuardar.setOnClickListener {
 
-            val nombreJuego = binding.juegosNombreIn
-            val nombre = nombreJuego.text
-            val autorJuego = binding.juegosAutorIn
-            val autor = autorJuego.text
-            val editorialJuego = binding.juegosEditorialIn
-            val editorial = editorialJuego.text
-            val jugadoresJuego = binding.juegosJugadoresIn
-            val jugadores = jugadoresJuego.text
-            val duracionJuego = binding.juegosDuracionIn
-            val duracion = duracionJuego.text
-            val categoriaJuego = binding.juegosCategoriasIn
-            val categoria = categoriaJuego.text
+            //val portadaJuego = binding.juegosImagen
+            //val portada = portadaJuego
+            val nombre = binding.juegosNombreIn.text.toString()
+            val autor = binding.juegosAutorIn.text.toString()
+            val editorial = binding.juegosEditorialIn.text.toString()
+            val jugadores = binding.juegosJugadoresIn.text.toString()
+            val duracion = binding.juegosDuracionIn.text.toString()
+            val categoria = binding.juegosCategoriasIn.text.toString()
 
-            if(nombre.isNullOrBlank()||autor.isNullOrBlank()||editorial.isNullOrBlank()||jugadores.isNullOrBlank()||duracion.isNullOrBlank()||categoria.isNullOrBlank()){
+            //Aviso campos vacios
+            if(nombre.isBlank()||autor.isBlank()||editorial.isBlank()||jugadores.isBlank()||duracion.isBlank()||categoria.isBlank()){
                 val toast= Toast.makeText(this, "¡Todos los campos deben estar cubiertos!", Toast.LENGTH_LONG)
                 toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 600)
                 toast.show()
-                binding.juegosEditorial.error ="Todos los campos deben estar cubiertos"
                 return@setOnClickListener
             }
 
-/*            val editorialJuego = binding.juegosEditorialIn
-            val editorial = editorialJuego.text
-            if(editorial.isNullOrBlank()){
-                binding.juegosEditorial.error ="La editorial no puede estar vacía"
-                return@setOnClickListener
-            }*/
+            else {
+
+                lifecycleScope.launch {
+                    withContext(Dispatchers.IO) {
+                        val idAutor: Long
+                        val idEditorial: Long
+
+                        //Busca si existe autor, si no inserta
+                        if(dbDes.autorDao().buscarAutor(autor) != autor){
+                            dbDes.autorDao().insert(Autor(autor))
+                            //Busca y devuelve id insertado
+                            idAutor= dbDes.autorDao().buscarIdAutor(autor)
+                        }else{
+                            idAutor= dbDes.autorDao().buscarIdAutor(autor)
+                            Log.d(TAG, idAutor.toString())
+                       }
+
+                        //Busca si existe editorial, si no inserta
+                        if(dbDes.editorialDao().buscarEditorial(editorial) != editorial){
+                            dbDes.editorialDao().insert(Editorial(editorial))
+                            //Busca y devuelve id insertado
+                            idEditorial= dbDes.editorialDao().buscarIdEditorial(editorial)
+                        }else{
+                            idEditorial= dbDes.editorialDao().buscarIdEditorial(editorial)
+                            Log.d(TAG, idEditorial.toString())
+                        }
+                        dbDes.juegoDao().insert(
+                            Juego(
+                                "portada.toString()",
+                                nombre, duracion, categoria,
+                                jugadores,idAutor, idEditorial)
+                        )
+                    }
+                }
+            }
+
         }
 
     }

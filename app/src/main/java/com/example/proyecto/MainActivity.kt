@@ -106,9 +106,9 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun cambiarFragment(fragment: Fragment){
-        val cambioFragment = supportFragmentManager.beginTransaction()
-        cambioFragment.replace(R.id.main_contenedor, fragment)
-        cambioFragment.addToBackStack(null)
-        cambioFragment.commit()
+        val frTransaction = supportFragmentManager.beginTransaction()
+        frTransaction.replace(R.id.main_contenedor, fragment)
+        frTransaction.addToBackStack(null)
+        frTransaction.commit()
     }
 }
