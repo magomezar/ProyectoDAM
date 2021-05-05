@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Partidas">
+    tools:context=".ui.activities.Partidas">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_vguide10"
@@ -37,6 +37,13 @@
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/partidas_formulario"
         android:background="@drawable/borde">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/partidas_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/partidas_recyclerview"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -86,6 +93,7 @@
             app:boxStrokeColor="@color/color_primary"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/partidas_buscar"
+            app:layout_constraintTop_toBottomOf="@+id/partidas_numero"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -112,7 +120,7 @@
             app:cornerRadius="10dp"
 
             app:layout_constraintBottom_toBottomOf="parent"
-
+            app:layout_constraintTop_toBottomOf="@+id/partidas_tiempo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:strokeColor="@color/black"

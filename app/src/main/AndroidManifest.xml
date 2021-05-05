@@ -2,20 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.proyecto">
 
+<!--    <uses-permission android:name="android.permission.CAMERA" />-->
+<!--    <uses-feature android:name="android.hardware.camera" android:required="true" />-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_letsplay"
+        android:icon="@mipmap/ic_activity_icon2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_letsplay_round"
+        android:roundIcon="@mipmap/ic_activity_icon2_round"
         android:supportsRtl="true"
-        android:theme="@style/Base.MyTheme">
-        <activity android:name=".Notas"></activity>
-        <activity android:name=".Editoriales" />
-        <activity android:name=".Autores" />
-        <activity android:name=".Partidas" />
-        <activity android:name=".Deseos" />
-        <activity android:name=".Juegos" />
-        <activity android:name=".MainActivity"
+        android:theme="@style/Base.MyTheme"
+        android:name=".db.app.AppActivity"
+        >
+        <activity android:name=".ui.activities.Notas"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.activities.Editoriales"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.activities.Autores"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.activities.Partidas" />
+        <activity android:name=".ui.activities.Deseos" />
+        <activity android:name=".ui.activities.Juegos" />
+        <activity android:name=".ui.activities.MainActivity"
             android:theme="@style/Splash"
             >
             <intent-filter>
@@ -24,6 +33,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.proyecto.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths">
+            </meta-data>
+        </provider>
 
         <meta-data
             android:name="preloaded_fonts"

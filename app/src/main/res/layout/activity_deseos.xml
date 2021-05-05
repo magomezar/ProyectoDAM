@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Deseos">
+    tools:context=".ui.activities.Deseos">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_vguide10"
@@ -45,13 +45,19 @@
         android:id="@+id/deseos_vista"
         android:layout_width="0dp"
         android:layout_height="130dp"
-
-        android:background="@drawable/borde"
         app:layout_constraintBottom_toTopOf="@+id/deseos_borrar"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
-        app:layout_constraintTop_toBottomOf="@+id/deseos_lista">
+        app:layout_constraintTop_toBottomOf="@+id/deseos_lista"
+        android:background="@drawable/borde">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/deseos_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/deseo_recyclerview"
+            tools:itemCount="4"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -67,7 +73,9 @@
         app:layout_constraintBottom_toTopOf="@+id/deseos_vista"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toEndOf="@id/main_vguide10"
-        app:layout_constraintTop_toBottomOf="@+id/deseos_formulario"></com.google.android.material.textview.MaterialTextView>
+        app:layout_constraintTop_toBottomOf="@+id/deseos_formulario">
+
+    </com.google.android.material.textview.MaterialTextView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/deseos_formulario"
@@ -96,7 +104,7 @@
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/deseos_editorial"
-            app:layout_constraintEnd_toStartOf="@id/deseos_añadir"
+            app:layout_constraintEnd_toStartOf="@id/deseos_ad"
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
@@ -113,7 +121,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/deseos_añadir"
+            android:id="@+id/deseos_ad"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="añadir"

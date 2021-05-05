@@ -1,21 +1,33 @@
-package com.example.proyecto
+package com.example.proyecto.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.*
 import androidx.appcompat.widget.PopupMenu
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.proyecto.R
+import com.example.proyecto.adapters.RecyclerViewAdapterDeseo
+import com.example.proyecto.adapters.deseoListener
 import com.example.proyecto.databinding.ActivityDeseosBinding
 import com.example.proyecto.db.AppDataBase
 import com.example.proyecto.db.entities.*
+import com.example.proyecto.db.projections.NotasPorJuego
+import com.example.proyecto.viewModel.DeseoViewModel
+import com.example.proyecto.viewModel.JuegoViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class Deseos : AppCompatActivity() {
+class Deseos : AppCompatActivity(),deseoListener {
 
     private lateinit var binding: ActivityDeseosBinding
+    private lateinit var rAdapter: RecyclerViewAdapterDeseo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,7 +35,18 @@ class Deseos : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val dbDes = AppDataBase.newdb(this)
+        val mDeseo = ViewModelProvider(this).get(DeseoViewModel::class.java)
+        mDeseo.mostrarDeseos().observe(this,{
+            rAdapter= RecyclerViewAdapterDeseo(it as MutableList<Deseo>,this)
+            val recyclerView=binding.deseosRecyclerview
+            recyclerView.apply {
+                //Indicamos la orientacion de la vista del recyclerView
+                layoutManager = LinearLayoutManager(this@Deseos, RecyclerView.VERTICAL, false)
+                adapter = rAdapter
+            }
+        })
+
+/*        val dbDes = AppDataBase.newdb(this)
 
         val deseo1 = Deseo("alta","atrapa la caca","Devir","Cacotas")
         val deseo2 = Deseo("muy alta","Terraforming","Maldito","Frixelius")
@@ -59,11 +82,11 @@ class Deseos : AppCompatActivity() {
                 }
 
             }
-        }
+        }*/
 
         //Vuelta a la pantalla principal
         binding.deseosBack.setOnClickListener {
-            val intent= Intent(this,MainActivity::class.java)
+            val intent= Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -80,20 +103,38 @@ class Deseos : AppCompatActivity() {
             }
         }
 
+        //Guardar deseo
+        binding.deseosAd.setOnClickListener {
 
+            val juego = binding.deseosJuegoIn.text.toString()
+            val autor = binding.deseosAutorIn.text.toString()
+            val editorial = binding.deseosEditorialIn.text.toString()
+            val prioridad = binding.deseosPrioridadIn.text.toString()
 
+            //Aviso campos vacios
+            if (juego.isBlank() || autor.isBlank() || editorial.isBlank() || prioridad.isBlank()) {
+                Snackbar.make(view, "¡Todos los campos deben estar cubiertos!", Snackbar.LENGTH_SHORT).show()
 
-        /*val editText = findViewById<EditText>(R.id.prueba)
-        editText.setOnClickListener {
-            PopupMenu(this, editText).apply {
-                menuInflater.inflate(R.menu.categorias, menu)
-                setOnMenuItemClickListener { item ->
-                    editText.setText(item.title)
-                    true
-                }
-                show()
+                return@setOnClickListener
+
+            } else {
+
+                mDeseo.agregarDeseo(Deseo(prioridad,juego,editorial,autor)).observe(this, {
+                    rAdapter.agregarDeseo(it) //Quitando esta no se muere la app
+                })
+                Snackbar.make(view, "El juego ha sido guardado", Snackbar.LENGTH_LONG).show()
             }
-        }*/
-
+        }
     }
+
+    override fun clickDeseo(item: Deseo, position: Int) {
+
+        binding.deseosBorrar.setOnClickListener {
+            val mDeseo = ViewModelProvider(this).get(DeseoViewModel::class.java)
+            mDeseo.borrarDeseo(item)
+            rAdapter.borrarDeseo(position)
+            //Snackbar.make(view, "Deseo borrado", Snackbar.LENGTH_LONG).show()
+        }
+    }
+
 }

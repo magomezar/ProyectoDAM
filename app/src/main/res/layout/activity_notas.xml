@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Notas">
+    tools:context=".ui.activities.Notas">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_vguide10"
@@ -50,6 +50,14 @@
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintTop_toBottomOf="@+id/notas_lista"
         android:background="@drawable/borde">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notas_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/nota_recyclerview"
+            tools:itemCount="4"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -84,30 +92,46 @@
         app:strokeWidth="2dp" />
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/notas_formulario"
         android:layout_width="0dp"
-        android:layout_height="140dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/borde"
         app:layout_constraintBottom_toTopOf="@+id/notas_agregar"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/notas_nombre">
-        android:background="@drawable/borde"
+
+        <EditText
+            android:id="@+id/notas_formulario_in"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></EditText>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/notas_nombre"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/notas_formulario"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/notas_encabezado">
+
+        <TextView
+            android:id="@+id/notas_nombre_juego"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:fontFamily="@font/amaranth_bold_italic"
+            android:textColor="@color/color_primary">
+
+        </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,43 +1,24 @@
 <resources>
     <string name="app_name">Let\'s Play</string>
+    <string name="add_bgames">añadir juegos</string>
+    <string name="wish_list">lista de deseos</string>
+    <string name="games">partidas</string>
+    <string name="bgame">juego</string>
+    <string name="bgames">Juegos</string>
+    <string name="author">Autor</string>
+    <string name="editorial">Editorial</string>
 
-    <string-array name="categorias">
-        <item>Categorías</item>
-        <item>Ameritrash</item>
-        <item>Cooperativo</item>
-        <item>Eurogame</item>
-        <item>Filler</item>
-        <item>Party</item>
-        <item>Roll</item>
-        <item>Roll and Write</item>
-        <item>Solitario</item>
-    </string-array>
+    <string name="info">info</string>
+    <string name="notes">notas</string>
+    <string name="delete">borrar</string>
+    <string name="save">guardar</string>
+    <string name="categories">Categorías</string>
+    <string name="players">Jugadores</string>
+    <string name="duration">Duración</string>
+    <string name="name">Nombre</string>
 
-    <string-array name="jugadores">
-        <item>Jugadores</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>+8</item>
-    </string-array>
 
-    <string-array name="duracion">
-        <item>Duración</item>
-        <item>0-15 Min</item>
-        <item>15-30 Min</item>
-        <item>30-60 Min</item>
-        <item>60-120 Min</item>
-        <item>120-180 Min</item>
-        <item>180-240 Min</item>
-        <item>+240 Min</item>
-    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 </resources>

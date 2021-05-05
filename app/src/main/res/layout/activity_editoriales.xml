@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Editoriales">
+    tools:context=".ui.activities.Editoriales">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/main_vguide10"
@@ -29,31 +29,36 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/editoriales_info"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
-        app:layout_constraintStart_toEndOf="@id/main_vguide10"
-        android:text="info"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="80dp"
+        android:text="@string/info"
         android:textAllCaps="true"
         app:cornerRadius="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"/>
+        app:layout_constraintBottom_toTopOf="@id/main_hguide90"
+        app:layout_constraintEnd_toStartOf="@id/editoriales_notas"
+        app:layout_constraintStart_toEndOf="@id/main_vguide10"
+        app:layout_constraintTop_toBottomOf="@+id/editoriales_lista"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/editoriales_notas"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/notes"
+        android:textAllCaps="true"
+        app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@id/main_hguide90"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
-        android:textAllCaps="true"
-        android:text="notas"
-        app:cornerRadius="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"/>
+        app:layout_constraintStart_toEndOf="@+id/editoriales_info"
+        app:layout_constraintTop_toBottomOf="@+id/editoriales_lista"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/editoriales_lista"
@@ -63,8 +68,16 @@
         app:layout_constraintBottom_toTopOf="@+id/main_hguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
-        app:layout_constraintTop_toBottomOf="@+id/main_opciones"
+        app:layout_constraintTop_toBottomOf="@+id/editoriales_juegos"
         android:background="@drawable/borde">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/editorial_juegos_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/autor_recyclerview"
+            tools:itemCount="4"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -76,7 +89,7 @@
         android:paddingBottom="10dp"
         android:text="Juegos"
         android:textColor="@color/color_primary"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editoriales_lista"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toEndOf="@id/main_vguide10"
@@ -125,7 +138,8 @@
             android:id="@+id/editoriales_nombre_in"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:imeOptions="actionDone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
