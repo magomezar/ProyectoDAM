@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
@@ -84,14 +85,14 @@ class Juegos : AppCompatActivity() {
                         currentPhotoPath = portada.toString()
                         binding.juegosImagen.setImageURI(Uri.fromFile(File(portada)))
                     }else {
-                        binding.juegosImagen.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.ic_baseline_image_search_24))
+                        binding.juegosImagen.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.ic_camara_icono))
                     }
                 }else {
                     mJuego.buscarPortada(juego.id).observe(this, {
                         if(!it.isEmpty()){
                             binding.juegosImagen.setImageURI(Uri.fromFile(File(it)))
                         }else
-                            binding.juegosImagen.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.ic_baseline_image_search_24))
+                            binding.juegosImagen.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.ic_camara_icono))
                     })
                 }
             })
@@ -107,7 +108,8 @@ class Juegos : AppCompatActivity() {
         //Desplegable de categorias
         binding.juegosCategoriasIn.setOnClickListener {
             val categorias = findViewById<EditText>(R.id.juegos_categorias_in)
-            PopupMenu(this, categorias).apply {
+            var formato = ContextThemeWrapper(this, R.style.PopupMenu)
+            PopupMenu(formato, categorias).apply {
                 menuInflater.inflate(R.menu.categorias, menu)
                 setOnMenuItemClickListener { item ->
                     categorias.setText(item.title)
@@ -120,7 +122,8 @@ class Juegos : AppCompatActivity() {
         //Desplegable para la duracion
         binding.juegosDuracionIn.setOnClickListener {
             val duracion = findViewById<EditText>(R.id.juegos_duracion_in)
-            PopupMenu(this, duracion).apply {
+            var formato = ContextThemeWrapper(this, R.style.PopupMenu)
+            PopupMenu(formato, duracion).apply {
                 menuInflater.inflate(R.menu.duracion, menu)
                 setOnMenuItemClickListener { item ->
                     duracion.setText(item.title)
@@ -133,7 +136,8 @@ class Juegos : AppCompatActivity() {
         //Desplegable para el numero de jugadores
         binding.juegosJugadoresIn.setOnClickListener {
             val jugadores = findViewById<EditText>(R.id.juegos_jugadores_in)
-            PopupMenu(this, jugadores).apply {
+            var formato = ContextThemeWrapper(this, R.style.PopupMenu)
+            PopupMenu(formato, jugadores).apply {
                 menuInflater.inflate(R.menu.jugadores, menu)
                 setOnMenuItemClickListener { item ->
                     jugadores.setText(item.title)
@@ -148,11 +152,11 @@ class Juegos : AppCompatActivity() {
             val autor = binding.juegosAutorIn.text.toString()
             mAutor.buscarAutor(autor).observe(this, { idAu ->
                 if (idAu != -1L) {
-                    Snackbar.make(view, "Autor ya creado", Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(view, "Autor ya creado", Snackbar.LENGTH_SHORT).show()
                     return@observe
                 }
                 mAutor.agregarAutor(Autor(autor))
-                Snackbar.make(view, "El autor ha sido creado", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(view, "El autor ha sido creado", Snackbar.LENGTH_SHORT).show()
             })
         }
 
@@ -161,11 +165,11 @@ class Juegos : AppCompatActivity() {
             val editorial = binding.juegosEditorialIn.text.toString()
             mEditorial.buscarEditorial(editorial).observe(this, { idEd ->
                 if (idEd != -1L) {
-                    Snackbar.make(view, "Editorial ya creada", Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(view, "Editorial ya creada", Snackbar.LENGTH_SHORT).show()
                     return@observe
                 }
                 mEditorial.agregarEditorial(Editorial(editorial))
-                Snackbar.make(view, "La editorial ha sido creada", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(view, "La editorial ha sido creada", Snackbar.LENGTH_SHORT).show()
             })
         }
 
@@ -177,6 +181,7 @@ class Juegos : AppCompatActivity() {
         //Guardar juego
         binding.juegosGuardar.setOnClickListener {
 
+            //Variables de los Editext
             val portada = currentPhotoPath
             val nombre = binding.juegosNombreIn.text.toString()
             val autor = binding.juegosAutorIn.text.toString()
@@ -205,48 +210,88 @@ class Juegos : AppCompatActivity() {
                                 return@observe
                            }
 
-                            if (intent.extras!=null) {
-                                val idJuego = intent.extras?.getLong("id")
-                                mJuego.buscarJuego(idJuego!!.toLong()).observe(this, { idJu ->
-                                    val act = mJuego.actualizarPortada(currentPhotoPath, idJu)
-                                    //Log.d(TAG,act.toString())
-
-                                    mJuego.actualizarJuego(nombre, duracion, categoria, jugadores, idAu, idEd, idJu)
-                                    // val actualizar = mJuego.actualizarJuego(nombre, duracion, categoria, jugadores, idAu, idEd, idJu)
-                                    // Log.d(TAG, actualizar.toString())
-
-                                    Snackbar.make(view, "Se ha actualizado el juego", Snackbar.LENGTH_LONG).show()
-                                })
-                            } else {
                             //mJuego.juegoCompleto(nombre).observe(this,{
                                 mJuego.buscarIdJuego(nombre).observe(this,{ idJ ->
                                     Log.d(TAG,idJ.toString())
                                     if(idJ == -1L){
                                         mJuego.agregarJuego(Juego(portada, nombre, duracion, categoria, jugadores, idAu, idEd))
                                         Snackbar.make(view, "El juego ha sido guardado", Snackbar.LENGTH_LONG).show()
-
+                                        val intent = Intent(this, MainActivity::class.java)
+                                        intent.putExtra("agregar", "El juego ha sido agregado")
+                                        startActivity(intent)
                                     }else{
                                         Snackbar.make(view, "El juego ya existe", Snackbar.LENGTH_LONG).show()
                                         return@observe
                                     }
-
-
-
                                 })
-                            //})
+                           })
+                    })
+            }
+        }
+
+        binding.juegosModificar.setOnClickListener {
+
+            if (intent.extras!=null) {
+
+                //Variables de los Editext
+                val portada = currentPhotoPath
+                val nombre = binding.juegosNombreIn.text.toString()
+                val autor = binding.juegosAutorIn.text.toString()
+                val editorial = binding.juegosEditorialIn.text.toString()
+                val jugadores = binding.juegosJugadoresIn.text.toString()
+                val duracion = binding.juegosDuracionIn.text.toString()
+                val categoria = binding.juegosCategoriasIn.text.toString()
+                //Log.d(TAG,portada)
+
+                //Aviso campos vacios
+                if (nombre.isBlank() || autor.isBlank() || editorial.isBlank() || jugadores.isBlank() || duracion.isBlank() || categoria.isBlank()) {
+                    Snackbar.make(view, "¡Todos los campos deben estar cubiertos!", Snackbar.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                //Comprobacion de datos y guardar juego
+                else {
+                    val idJuego = intent.extras?.getLong("id")
+                    mJuego.buscarJuego(idJuego!!.toLong()).observe(this, { idJu ->
+
+                        mAutor.buscarAutor(autor).observe(this, { idAu ->
+                            if (idAu == -1L) {
+                                Snackbar.make(view, "Este autor no existe. Agrega primero el autor", Snackbar.LENGTH_LONG).show()
+                                return@observe
                             }
+                            mEditorial.buscarEditorial(editorial).observe(this, { idEd ->
+                                if (idEd == -1L) {
+                                    Snackbar.make(view, "Esta editorial no existe. Agrega primero la editorial", Snackbar.LENGTH_LONG).show()
+                                    return@observe
+                                }
+                                mJuego.actualizarPortada(portada, idJu)
+                                  //val act = mJuego.actualizarPortada(portada, idJu)
+                                  //Log.d(TAG,act.toString())
+
+                                mJuego.actualizarJuego(nombre, duracion, categoria, jugadores, idAu, idEd, idJu)
+                                 // val actualizar = mJuego.actualizarJuego(nombre, duracion, categoria, jugadores, idAu, idEd, idJu)
+                                 // Log.d(TAG, actualizar.toString())
+                                Snackbar.make(view, "Se ha actualizado el juego", Snackbar.LENGTH_LONG).show()
+                            })
                         })
                     })
+                }
+
+            } else{
+                Snackbar.make(view, "No se puede actualizar sin guardar primero", Snackbar.LENGTH_LONG).show()
             }
 
         }
 
         //Agregar notas
         binding.juegosNotas.setOnClickListener {
-            val nombre = binding.juegosNombreIn.text.toString()
-            val intent = Intent(this, Notas::class.java)
-            intent.putExtra("nombre", nombre.toString())
-            startActivity(intent)
+            if(intent.extras!=null) {
+                val nombre = binding.juegosNombreIn.text.toString()
+                val intent = Intent(this, Notas::class.java)
+                intent.putExtra("nombre", nombre.toString())
+                startActivity(intent)
+            } else {
+                Snackbar.make(view, "No se puede ir a notas sin un juego agregado", Snackbar.LENGTH_LONG).show()
+            }
         }
 
         binding.juegosBorrar.setOnClickListener {

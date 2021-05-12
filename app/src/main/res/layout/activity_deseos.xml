@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_fondo_todo"
     tools:context=".ui.activities.Deseos">
 
     <androidx.constraintlayout.widget.Guideline
@@ -31,20 +32,24 @@
         android:id="@+id/deseos_borrar"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
         android:text="borrar"
         android:textAllCaps="true"
+        android:textSize="12sp"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@id/main_hguide90"
         app:layout_constraintEnd_toStartOf="@+id/main_vguide90"
         app:layout_constraintStart_toEndOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/deseos_vista"
         app:strokeColor="@color/black"
+        android:backgroundTint="#00a7bf"
+        android:textColor="@color/color_on_primary"
         app:strokeWidth="2dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/deseos_vista"
         android:layout_width="0dp"
-        android:layout_height="130dp"
+        android:layout_height="150dp"
         app:layout_constraintBottom_toTopOf="@+id/deseos_borrar"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
@@ -65,10 +70,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/amaranth_bold_italic"
+        android:fontFamily="@font/montserrat_bold"
         android:paddingBottom="10dp"
         android:text="Lista de Deseos"
-        android:textColor="@color/color_primary"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/deseos_vista"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
@@ -80,8 +85,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/deseos_formulario"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="280dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/deseos_lista"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
@@ -95,12 +99,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="Prioridad"
-            android:textColorHint="@color/color_primary"
+            android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeColor="#B8cee0"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/deseos_editorial"
@@ -115,8 +119,10 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:fontFamily="@font/montserrat_bold"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"/>
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -124,14 +130,18 @@
             android:id="@+id/deseos_ad"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
             android:text="añadir"
             android:textAllCaps="true"
+            android:textSize="12sp"
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/deseos_editorial"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.797"
             app:layout_constraintStart_toEndOf="@+id/deseos_prioridad"
+            app:layout_constraintTop_toBottomOf="@+id/deseos_editorial"
+            app:backgroundTint="#B8cee0"
+            android:textColor="@color/black"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp" />
 
@@ -144,12 +154,12 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:hint="Editorial"
-            android:textColorHint="@color/color_primary"
+            android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeColor="#B8cee0"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/deseos_prioridad"
             app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +170,9 @@
                 android:id="@+id/deseos_editorial_in"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName" />
+                android:fontFamily="@font/montserrat_bold"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -172,12 +184,12 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:hint="Autor"
-            android:textColorHint="@color/color_primary"
+            android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeColor="#B8cee0"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/deseos_editorial"
             app:layout_constraintEnd_toEndOf="parent"
@@ -188,7 +200,9 @@
                 android:id="@+id/deseos_autor_in"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName" />
+                android:fontFamily="@font/montserrat_bold"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -202,12 +216,12 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:hint="Juego"
-            android:textColorHint="@color/color_primary"
+            android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeColor="#B8cee0"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/deseos_autor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -218,7 +232,9 @@
                 android:id="@+id/deseos_juego_in"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName" />
+                android:fontFamily="@font/montserrat_bold"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -238,7 +254,7 @@
             android:id="@+id/deseos_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="31dp"
+
             android:contextClickable="true"
             app:cornerRadius="25dp"
             app:icon="@drawable/ic_baseline_arrow_left_24"
@@ -246,6 +262,8 @@
             app:layout_constraintEnd_toStartOf="@+id/deseos_titulo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@color/white"
+            android:textColor="@color/black"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp">
 
@@ -256,10 +274,11 @@
             android:id="@+id/deseos_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/amaranth_bold_italic"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Deseos"
+            android:layout_marginStart="20dp"
             android:textAllCaps="false"
-            android:textColor="@color/color_primary"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -273,7 +292,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="249dp"
-            android:src="@mipmap/ic_activity_icon_foreground"
+            android:src="@drawable/ic_icono_deseos"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

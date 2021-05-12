@@ -22,7 +22,8 @@
         <activity android:name=".ui.activities.Autores"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ui.activities.Partidas" />
-        <activity android:name=".ui.activities.Deseos" />
+        <activity android:name=".ui.activities.Deseos"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ui.activities.Juegos" />
         <activity android:name=".ui.activities.MainActivity"
             android:theme="@style/Splash"

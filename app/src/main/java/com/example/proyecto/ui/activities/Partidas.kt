@@ -3,9 +3,8 @@ package com.example.proyecto.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
+import android.view.ContextThemeWrapper
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +13,7 @@ import com.example.proyecto.R
 import com.example.proyecto.adapters.RecyclerViewAdapterPartida
 import com.example.proyecto.databinding.ActivityPartidasBinding
 import com.example.proyecto.viewModel.JuegoViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class Partidas : AppCompatActivity() {
@@ -36,11 +36,12 @@ class Partidas : AppCompatActivity() {
 
         //Desplegable numero de jugadores
         binding.partidasNumeroIn.setOnClickListener {
-            val duracion = findViewById<EditText>(R.id.partidas_numero_in)
-            PopupMenu(this, duracion).apply {
+            val numero = findViewById<EditText>(R.id.partidas_numero_in)
+            var formato = ContextThemeWrapper(this, R.style.PopupMenu)
+            PopupMenu(formato, numero).apply {
                 menuInflater.inflate(R.menu.jugadores, menu)
                 setOnMenuItemClickListener { item ->
-                    duracion.setText(item.title)
+                    numero.setText(item.title)
                     true
                 }
                 show()
@@ -50,7 +51,8 @@ class Partidas : AppCompatActivity() {
         //Desplegable tiempo de partida
         binding.partidasTiempoIn.setOnClickListener {
             val duracion = findViewById<EditText>(R.id.partidas_tiempo_in)
-            PopupMenu(this, duracion).apply {
+            var formato = ContextThemeWrapper(this, R.style.PopupMenu)
+            PopupMenu(formato, duracion).apply {
                 menuInflater.inflate(R.menu.duracion, menu)
                 setOnMenuItemClickListener { item ->
                     duracion.setText(item.title)
@@ -67,9 +69,7 @@ class Partidas : AppCompatActivity() {
 
             //Aviso campos vacios
             if (jugadores.isBlank() || tiempo.isBlank()) {
-                val toast = Toast.makeText(this, "¡Todos los campos deben estar cubiertos!", Toast.LENGTH_LONG)
-                toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 600)
-                toast.show()
+                Snackbar.make(view, "¡Todos los campos deben estar cubiertos!", Snackbar.LENGTH_LONG).show()
                 return@setOnClickListener
             }
             else{

@@ -1,10 +1,10 @@
 package com.example.proyecto.ui.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.Toast
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +13,7 @@ import com.example.proyecto.adapters.juegosPorAutorListener
 import com.example.proyecto.databinding.ActivityAutoresBinding
 import com.example.proyecto.db.projections.JuegosPorAutor
 import com.example.proyecto.viewModel.AutorViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class Autores : AppCompatActivity(), juegosPorAutorListener{
 
@@ -24,8 +25,9 @@ class Autores : AppCompatActivity(), juegosPorAutorListener{
         val view = binding.root
         setContentView(view)
 
-        val nombreFicha = intent.extras?.get("nombre")
         val mAutor = ViewModelProvider(this).get(AutorViewModel::class.java)
+        val nombreFicha = intent.extras?.get("nombre")
+
 
         binding.autoresNombreIn.setText(nombreFicha.toString())
 
@@ -36,16 +38,23 @@ class Autores : AppCompatActivity(), juegosPorAutorListener{
 
         binding.autoresBuscar.setOnClickListener{
 
+            val ocultarTeclado: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            ocultarTeclado.hideSoftInputFromWindow(view.windowToken, 0)
+
             val autor = binding.autoresNombreIn.text.toString()
 
             //Aviso campos vacios
             if (autor.isBlank()) {
-                val toast = Toast.makeText(this, "¡Todos los campos deben estar cubiertos!", Toast.LENGTH_LONG)
-                toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 600)
-                toast.show()
+                Snackbar.make(view, "¡Todos los campos deben estar cubiertos!", Snackbar.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            else{
+            else {
+                mAutor.buscarAutor(autor).observe(this, { idEd ->
+                    if (idEd == -1L) {
+                        Snackbar.make(view, "El autor no existe", Snackbar.LENGTH_LONG).show()
+                        return@observe
+                    }
+                })
                 mAutor.buscarAutor(autor).observe(this,{ idAutor ->
                     mAutor.buscarJuegos(idAutor).observe(this,{
                         val nAdapter= RecyclerViewAdapterJuegosPorAutor(it,this)

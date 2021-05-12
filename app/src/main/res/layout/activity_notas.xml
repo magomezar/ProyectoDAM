@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_fondo_todo"
     tools:context=".ui.activities.Notas">
 
     <androidx.constraintlayout.widget.Guideline
@@ -25,12 +26,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.96" />
+        app:layout_constraintGuide_begin="702dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/notas_borrar"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="12sp"
         android:text="borrar"
         android:textAllCaps="true"
         app:cornerRadius="10dp"
@@ -39,6 +42,8 @@
         app:layout_constraintStart_toEndOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/notas_vista"
         app:strokeColor="@color/black"
+        android:backgroundTint="#00a7bf"
+        android:textColor="@color/color_on_primary"
         app:strokeWidth="2dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,10 +70,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/amaranth_bold_italic"
+        android:fontFamily="@font/montserrat_bold"
         android:paddingBottom="10dp"
         android:text="Notas"
-        android:textColor="@color/color_primary"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/notas_vista"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
@@ -78,37 +83,55 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/notas_agregar"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="agregar nota"
         android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:backgroundTint="#B8cee0"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/notas_lista"
-        app:layout_constraintTop_toBottomOf="@+id/notas_formulario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.797"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notas_formulario"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/notas_formulario"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/borde"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        app:boxStrokeColor="@color/color_primary"
+        app:boxStrokeWidth="2dp"
+        android:hint="Escribe tu nota aqui"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/notas_agregar"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/notas_nombre">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/notas_formulario_in"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></EditText>
+            android:layout_height="match_parent"
+            android:inputType="textPersonName"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="14sp"
+            android:imeOptions="actionDone">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -126,10 +149,12 @@
             android:id="@+id/notas_nombre_juego"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="24sp"
+            android:fontFamily="@font/montserrat_bold"
             android:textAlignment="center"
-            android:fontFamily="@font/amaranth_bold_italic"
-            android:textColor="@color/color_primary">
+            android:textColor="@color/color_primary"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
         </TextView>
 
@@ -157,6 +182,8 @@
             app:layout_constraintEnd_toStartOf="@+id/notas_titulo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@color/white"
+            android:textColor="@color/black"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp">
 
@@ -167,10 +194,10 @@
             android:id="@+id/notas_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/amaranth_bold_italic"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Notas"
             android:textAllCaps="false"
-            android:textColor="@color/color_primary"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -184,7 +211,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="249dp"
-            android:src="@mipmap/ic_activity_icon_foreground"
+            android:src="@drawable/ic_icono_notas"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

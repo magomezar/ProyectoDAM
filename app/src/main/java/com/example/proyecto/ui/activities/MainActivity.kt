@@ -14,6 +14,7 @@ import com.example.proyecto.databinding.ActivityMainBinding
 import com.example.proyecto.db.AppDataBase
 import com.example.proyecto.db.entities.*
 import com.example.proyecto.viewModel.JuegoViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         val dbDes = AppDataBase.newdb(this)
+
+        if (intent.extras!=null){
+            val agregar = intent.extras?.get("agregar")
+            Snackbar.make(view, "${agregar.toString()}", Snackbar.LENGTH_LONG).show()
+        }
         //cambiarFragment(juegosFragment)
 //        val frTransaction = supportFragmentManager.beginTransaction()
 //        frTransaction.replace(R.id.main_contenedor, juegosFragment)

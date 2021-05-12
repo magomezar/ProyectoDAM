@@ -1,13 +1,13 @@
 package com.example.proyecto.ui.activities
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyecto.adapters.RecyclerViewAdapterJuego
 import com.example.proyecto.adapters.RecyclerViewAdapterNota
 import com.example.proyecto.adapters.notaListener
 import com.example.proyecto.databinding.ActivityNotasBinding
@@ -15,8 +15,7 @@ import com.example.proyecto.db.entities.Nota
 import com.example.proyecto.db.projections.NotasPorJuego
 import com.example.proyecto.viewModel.JuegoViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.snackbar.SnackbarContentLayout
-import kotlinx.coroutines.withContext
+
 
 class Notas : AppCompatActivity(), notaListener {
 
@@ -33,13 +32,13 @@ class Notas : AppCompatActivity(), notaListener {
         val nombreFicha = intent.extras?.get("nombre")
         binding.notasNombreJuego.setText(nombreFicha.toString())
 
-        ////
+
         mJuego.juegoCompleto(nombreFicha.toString()).observe(this, {
             mJuego.mostrarNotasPorJuego(it.id).observe(this, {
                 rAdapter = RecyclerViewAdapterNota(it as MutableList<NotasPorJuego>, this)
                 val recycler = binding.notasRecyclerview
                 recycler.apply {
-                    layoutManager = LinearLayoutManager(this@Notas, RecyclerView.VERTICAL,false)
+                    layoutManager = LinearLayoutManager(this@Notas, RecyclerView.VERTICAL, false)
                     adapter = rAdapter
                 }
             })
@@ -55,6 +54,9 @@ class Notas : AppCompatActivity(), notaListener {
         //Agregar notas
         binding.notasAgregar.setOnClickListener {
 
+            val ocultarTeclado: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            ocultarTeclado.hideSoftInputFromWindow(view.windowToken, 0)
+
             val nota = binding.notasFormularioIn.text.toString()
 
             if (nota.isBlank()) {
@@ -64,19 +66,19 @@ class Notas : AppCompatActivity(), notaListener {
             }  else {
                 mJuego.juegoCompleto(nombreFicha.toString()).observe(this, {
 
-                    mJuego.agregarNotasJuego(Nota(nota,it.id)).observe(this, {
-                       rAdapter.agregarNota(it)
+                    mJuego.agregarNotasJuego(Nota(nota, it.id)).observe(this, {
+                        rAdapter.agregarNota(it)
                     })
                 })
                 Snackbar.make(view, "La nota ha sido guardada", Snackbar.LENGTH_LONG).show()
             }
+            binding.notasFormularioIn.text?.clear()
         }
 
 
     }
 
     override fun clickNota(item: NotasPorJuego, position: Int) {
-        //TODO("Not yet implemented")
         binding.notasBorrar.setOnClickListener {
             val mJuego = ViewModelProvider(this).get(JuegoViewModel::class.java)
             mJuego.borrarNotas(item.id)

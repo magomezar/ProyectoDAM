@@ -1,9 +1,11 @@
 package com.example.proyecto.ui.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
+import android.view.ContextThemeWrapper
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
@@ -16,9 +18,7 @@ import com.example.proyecto.adapters.deseoListener
 import com.example.proyecto.databinding.ActivityDeseosBinding
 import com.example.proyecto.db.AppDataBase
 import com.example.proyecto.db.entities.*
-import com.example.proyecto.db.projections.NotasPorJuego
 import com.example.proyecto.viewModel.DeseoViewModel
-import com.example.proyecto.viewModel.JuegoViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -92,8 +92,13 @@ class Deseos : AppCompatActivity(),deseoListener {
 
         //Desplegable de prioridades
         binding.deseosPrioridadIn.setOnClickListener {
+
+            val ocultarTeclado: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            ocultarTeclado.hideSoftInputFromWindow(view.windowToken, 0)
+
             val prioridad = findViewById<EditText>(R.id.deseos_prioridad_in)
-            PopupMenu(this, prioridad).apply {
+            var formato = ContextThemeWrapper(this, R.style.PopupMenu)
+            PopupMenu(formato, prioridad).apply {
                 menuInflater.inflate(R.menu.prioridad, menu)
                 setOnMenuItemClickListener { item ->
                     prioridad.setText(item.title)
@@ -105,6 +110,9 @@ class Deseos : AppCompatActivity(),deseoListener {
 
         //Guardar deseo
         binding.deseosAd.setOnClickListener {
+
+            val ocultarTeclado: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            ocultarTeclado.hideSoftInputFromWindow(view.windowToken, 0)
 
             val juego = binding.deseosJuegoIn.text.toString()
             val autor = binding.deseosAutorIn.text.toString()
@@ -120,7 +128,7 @@ class Deseos : AppCompatActivity(),deseoListener {
             } else {
 
                 mDeseo.agregarDeseo(Deseo(prioridad,juego,editorial,autor)).observe(this, {
-                    rAdapter.agregarDeseo(it) //Quitando esta no se muere la app
+                    rAdapter.agregarDeseo(it)
                 })
                 Snackbar.make(view, "El juego ha sido guardado", Snackbar.LENGTH_LONG).show()
             }

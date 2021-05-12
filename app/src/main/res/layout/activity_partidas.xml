@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_fondo_todo"
     tools:context=".ui.activities.Partidas">
 
     <androidx.constraintlayout.widget.Guideline
@@ -51,10 +52,10 @@
         android:id="@+id/partidas_posibles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/amaranth_bold_italic"
+        android:fontFamily="@font/montserrat_bold"
         android:paddingBottom="10dp"
         android:text="Juegos posibles"
-        android:textColor="@color/color_primary"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/partidas_lista"
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
@@ -85,12 +86,12 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:hint="Tiempo de Juego"
-            android:textColorHint="@color/color_primary"
+            android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeColor="#B8cee0"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/partidas_buscar"
             app:layout_constraintTop_toBottomOf="@+id/partidas_numero"
@@ -105,6 +106,8 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="14sp"
                 android:importantForAutofill="no" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -114,15 +117,17 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="12sp"
             android:text="buscar"
             android:textAllCaps="true"
-
             app:cornerRadius="10dp"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/partidas_tiempo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:backgroundTint="#B8cee0"
+            android:textColor="@color/black"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp" />
 
@@ -135,12 +140,12 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
             android:hint="Número de Jugadores"
-            android:textColorHint="@color/color_primary"
+            android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeColor="@color/color_primary"
+            app:boxStrokeColor="#B8cee0"
             app:boxStrokeWidth="2dp"
             app:layout_constraintBottom_toTopOf="@id/partidas_tiempo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -155,6 +160,8 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="14sp"
                 android:importantForAutofill="no" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -177,7 +184,6 @@
             android:id="@+id/partidas_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
             android:contextClickable="true"
             app:cornerRadius="25dp"
             app:icon="@drawable/ic_baseline_arrow_left_24"
@@ -185,6 +191,8 @@
             app:layout_constraintEnd_toStartOf="@+id/partidas_titulo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@color/white"
+            android:textColor="@color/black"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp">
 
@@ -195,10 +203,11 @@
             android:id="@+id/partidas_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/amaranth_bold_italic"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Partidas"
+            android:layout_marginStart="20dp"
             android:textAllCaps="false"
-            android:textColor="@color/color_primary"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +221,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="249dp"
-            android:src="@mipmap/ic_activity_icon_foreground"
+            android:src="@drawable/ic_icono_partidas"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
