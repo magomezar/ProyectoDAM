@@ -70,7 +70,7 @@ class Notas : AppCompatActivity(), notaListener {
                         rAdapter.agregarNota(it)
                     })
                 })
-                Snackbar.make(view, "La nota ha sido guardada", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(view, "La nota ha sido guardada", Snackbar.LENGTH_SHORT).show()
             }
             binding.notasFormularioIn.text?.clear()
         }

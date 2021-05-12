@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="702dp" />
+        app:layout_constraintGuide_percent="0.93"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/notas_borrar"

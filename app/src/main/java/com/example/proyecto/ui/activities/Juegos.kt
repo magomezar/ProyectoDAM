@@ -14,10 +14,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import com.example.proyecto.R
+import com.example.proyecto.adapters.notaListener
 import com.example.proyecto.databinding.ActivityJuegosBinding
 import com.example.proyecto.db.entities.Autor
 import com.example.proyecto.db.entities.Editorial
 import com.example.proyecto.db.entities.Juego
+import com.example.proyecto.db.entities.Nota
 import com.example.proyecto.viewModel.AutorViewModel
 import com.example.proyecto.viewModel.EditorialViewModel
 import com.example.proyecto.viewModel.JuegoViewModel
@@ -297,6 +299,11 @@ class Juegos : AppCompatActivity() {
         binding.juegosBorrar.setOnClickListener {
             val nombre = binding.juegosNombreIn.text.toString()
             mJuego.juegoCompleto(nombre).observe(this, {
+                mJuego.mostrarNotasPorJuego(it.id).observe(this, {
+                    it.forEach {
+                        mJuego.borrarNotas(it.id)
+                    }
+                })
                 mJuego.borrarJuego(it)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
