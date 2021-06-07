@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toStartOf="@id/main_vguide90"
         app:layout_constraintStart_toStartOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/partidas_formulario"
-        android:background="@drawable/borde">
+        android:background="@android:color/transparent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/partidas_recyclerview"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
         android:paddingBottom="10dp"
-        android:text="Juegos posibles"
+        android:text="@string/posible_game"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/partidas_lista"
@@ -85,7 +85,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            android:hint="Tiempo de Juego"
             android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
@@ -100,6 +99,7 @@
 
             <EditText
                 android:id="@+id/partidas_tiempo_in"
+                android:hint="@string/game_time"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
@@ -108,6 +108,7 @@
                 android:focusableInTouchMode="false"
                 android:fontFamily="@font/montserrat_bold"
                 android:textSize="14sp"
+                android:inputType="textPersonName"
                 android:importantForAutofill="no" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -119,7 +120,7 @@
             android:layout_marginStart="160dp"
             android:fontFamily="@font/montserrat_bold"
             android:textSize="12sp"
-            android:text="buscar"
+            android:text="@string/search"
             android:textAllCaps="true"
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -139,7 +140,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
-            android:hint="Número de Jugadores"
             android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
@@ -154,6 +154,7 @@
 
             <EditText
                 android:id="@+id/partidas_numero_in"
+                android:hint="@string/number_players"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
@@ -162,6 +163,7 @@
                 android:focusableInTouchMode="false"
                 android:fontFamily="@font/montserrat_bold"
                 android:textSize="14sp"
+                android:inputType="textPersonName"
                 android:importantForAutofill="no" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -180,31 +182,33 @@
         app:layout_constraintStart_toEndOf="@+id/main_vguide10"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/partidas_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="84dp"
+            android:layout_height="61dp"
             android:contextClickable="true"
+            android:drawableLeft="@drawable/ic_flecha_volv"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
             app:cornerRadius="25dp"
-            app:icon="@drawable/ic_baseline_arrow_left_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/partidas_titulo"
+            app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:backgroundTint="@color/white"
-            android:textColor="@color/black"
+            app:layout_constraintVertical_bias="0.521"
             app:strokeColor="@color/black"
             app:strokeWidth="2dp">
 
         </com.google.android.material.button.MaterialButton>
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/partidas_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Partidas"
+            android:text="@string/games"
             android:layout_marginStart="20dp"
             android:textAllCaps="false"
             android:textColor="@color/white"

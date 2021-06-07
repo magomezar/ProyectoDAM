@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import android.view.ContextThemeWrapper
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +13,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import com.example.proyecto.R
-import com.example.proyecto.adapters.notaListener
 import com.example.proyecto.databinding.ActivityJuegosBinding
 import com.example.proyecto.db.entities.Autor
 import com.example.proyecto.db.entities.Editorial
 import com.example.proyecto.db.entities.Juego
-import com.example.proyecto.db.entities.Nota
 import com.example.proyecto.viewModel.AutorViewModel
 import com.example.proyecto.viewModel.EditorialViewModel
 import com.example.proyecto.viewModel.JuegoViewModel
@@ -33,7 +30,6 @@ import java.util.*
 class Juegos : AppCompatActivity() {
 
     private lateinit var binding: ActivityJuegosBinding
-    val TAG = "JUEGOS"
     val REQUEST_TAKE_PHOTO = 1
     var currentPhotoPath:String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,16 +39,17 @@ class Juegos : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //Log.d(TAG, currentPhotoPath)
         val mJuego = ViewModelProvider(this).get(JuegoViewModel::class.java)
         val mAutor = ViewModelProvider(this).get(AutorViewModel::class.java)
         val mEditorial = ViewModelProvider(this).get(EditorialViewModel::class.java)
 
+        //Intentamos recuperar el valor de la clave nombre
         if (intent.extras!=null){
             val nombreFicha = intent.extras?.get("nombre")
 
             binding.juegosNombreIn.setText(nombreFicha.toString())
 
+            //Intentamos recuperar el valor de la clave autor
             if(intent.extras?.get("autor")==null) {
                 mJuego.juegoCompleto(nombreFicha.toString()).observe(this, {
                     val juego = it
@@ -64,6 +61,7 @@ class Juegos : AppCompatActivity() {
             binding.juegosAutorIn.setText(intent.extras?.get("autor").toString())
             }
 
+            //Intentamos recuperar el valor de la clave editorial
             if(intent.extras?.get("editorial")==null) {
                 mJuego.juegoCompleto(nombreFicha.toString()).observe(this, {
                     val juego = it
@@ -81,20 +79,23 @@ class Juegos : AppCompatActivity() {
                 binding.juegosCategoriasIn.setText(juego.categoria)
                 binding.juegosDuracionIn.setText(juego.duracion)
 
+                //Intentamos recuperar la portada o definir nuestro logo por defecto
                 if (intent.extras?.getString("portada") != null){
                     val portada = intent.extras?.getString("portada")
                     if(!portada!!.isEmpty()) {
                         currentPhotoPath = portada.toString()
                         binding.juegosImagen.setImageURI(Uri.fromFile(File(portada)))
                     }else {
-                        binding.juegosImagen.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.ic_camara_icono))
+                        binding.juegosImagen.setImageDrawable(ContextCompat
+                            .getDrawable(applicationContext,R.drawable.ic_camara_icono))
                     }
                 }else {
                     mJuego.buscarPortada(juego.id).observe(this, {
                         if(!it.isEmpty()){
                             binding.juegosImagen.setImageURI(Uri.fromFile(File(it)))
                         }else
-                            binding.juegosImagen.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.ic_camara_icono))
+                            binding.juegosImagen.setImageDrawable(ContextCompat
+                                .getDrawable(applicationContext,R.drawable.ic_camara_icono))
                     })
                 }
             })
@@ -212,9 +213,7 @@ class Juegos : AppCompatActivity() {
                                 return@observe
                            }
 
-                            //mJuego.juegoCompleto(nombre).observe(this,{
                                 mJuego.buscarIdJuego(nombre).observe(this,{ idJ ->
-                                    Log.d(TAG,idJ.toString())
                                     if(idJ == -1L){
                                         mJuego.agregarJuego(Juego(portada, nombre, duracion, categoria, jugadores, idAu, idEd))
                                         Snackbar.make(view, "El juego ha sido guardado", Snackbar.LENGTH_LONG).show()
@@ -231,6 +230,7 @@ class Juegos : AppCompatActivity() {
             }
         }
 
+        //Modificar Juego
         binding.juegosModificar.setOnClickListener {
 
             if (intent.extras!=null) {
@@ -266,12 +266,7 @@ class Juegos : AppCompatActivity() {
                                     return@observe
                                 }
                                 mJuego.actualizarPortada(portada, idJu)
-                                  //val act = mJuego.actualizarPortada(portada, idJu)
-                                  //Log.d(TAG,act.toString())
-
                                 mJuego.actualizarJuego(nombre, duracion, categoria, jugadores, idAu, idEd, idJu)
-                                 // val actualizar = mJuego.actualizarJuego(nombre, duracion, categoria, jugadores, idAu, idEd, idJu)
-                                 // Log.d(TAG, actualizar.toString())
                                 Snackbar.make(view, "Se ha actualizado el juego", Snackbar.LENGTH_LONG).show()
                             })
                         })
@@ -296,6 +291,7 @@ class Juegos : AppCompatActivity() {
             }
         }
 
+        //Borrar juego
         binding.juegosBorrar.setOnClickListener {
             val nombre = binding.juegosNombreIn.text.toString()
             mJuego.juegoCompleto(nombre).observe(this, {
@@ -311,7 +307,7 @@ class Juegos : AppCompatActivity() {
         }
     }
 
-
+    //Intent para tomar una foto para el juego
     private fun dispatchTakePictureIntent() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             // Ensure that there's a camera activity to handle the intent
@@ -336,6 +332,7 @@ class Juegos : AppCompatActivity() {
     }
 
 
+    //Creamos el nombre de la foto que vamos a guardar usando la fecha y la hora
     @Throws(IOException::class)
     private fun createImageFile(): File {
         // Create an image file name
@@ -350,6 +347,7 @@ class Juegos : AppCompatActivity() {
         }
     }
 
+    //Recupera la imagen que tomamos del juego y la introduce en el registro del juego
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {

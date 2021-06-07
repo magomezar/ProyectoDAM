@@ -9,20 +9,15 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto.R
 import com.example.proyecto.adapters.RecyclerViewAdapterDeseo
 import com.example.proyecto.adapters.deseoListener
 import com.example.proyecto.databinding.ActivityDeseosBinding
-import com.example.proyecto.db.AppDataBase
 import com.example.proyecto.db.entities.*
 import com.example.proyecto.viewModel.DeseoViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class Deseos : AppCompatActivity(),deseoListener {
 
@@ -45,44 +40,6 @@ class Deseos : AppCompatActivity(),deseoListener {
                 adapter = rAdapter
             }
         })
-
-/*        val dbDes = AppDataBase.newdb(this)
-
-        val deseo1 = Deseo("alta","atrapa la caca","Devir","Cacotas")
-        val deseo2 = Deseo("muy alta","Terraforming","Maldito","Frixelius")
-
-        val autor1 = Autor("Frixelius")
-        val autor2 = Autor("Bauza")
-
-        val editorial1 = Editorial("Maldito")
-        val editorial2 = Editorial("Devir")
-
-        val nota1 = Nota("Me encanta, muy bonito",1)
-        val nota2 = Nota("Que juego mas feo",1)
-
-        val juego1 = Juego("FOTICO","Terraforming","3 horas","Eurogame","Hasta 5",1,1)
-        val juego2 = Juego("FOTAZA","Last Bastion","2 horas","Eurogame","Hasta 4",1,2)
-
-        lifecycleScope.launch{
-            withContext(Dispatchers.IO){
-                dbDes.deseoDao().insert(deseo1)
-                dbDes.deseoDao().insert(deseo2)
-                dbDes.autorDao().insert(autor1)
-                dbDes.autorDao().insert(autor2)
-                dbDes.editorialDao().insert(editorial1)
-                dbDes.editorialDao().insert(editorial2)
-                dbDes.notaDao().insert(nota1)
-                dbDes.notaDao().insert(nota2)
-                dbDes.juegoDao().insert(juego1)
-                dbDes.juegoDao().insert(juego2)
-
-                val lista = mutableListOf(dbDes.autorDao().mostrarJuegosPorAutor(1))
-                lista.forEach {
-                    println(it)
-                }
-
-            }
-        }*/
 
         //Vuelta a la pantalla principal
         binding.deseosBack.setOnClickListener {
@@ -141,7 +98,6 @@ class Deseos : AppCompatActivity(),deseoListener {
             val mDeseo = ViewModelProvider(this).get(DeseoViewModel::class.java)
             mDeseo.borrarDeseo(item)
             rAdapter.borrarDeseo(position)
-            //Snackbar.make(view, "Deseo borrado", Snackbar.LENGTH_LONG).show()
         }
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_fondo_todo"
+    android:background="@drawable/ic_fondo_tod"
     tools:context=".ui.activities.Juegos">
 
     <androidx.constraintlayout.widget.Guideline
@@ -41,9 +41,9 @@
         app:layout_constraintEnd_toStartOf="@+id/main_vguide90"
         app:layout_constraintStart_toEndOf="@id/main_vguide10"
         app:layout_constraintTop_toBottomOf="@+id/juegos_cuadro"
-        app:backgroundTint="#007d87"
-        android:textColor="@color/black"
         app:strokeColor="@color/black"
+        android:backgroundTint="#00a7bf"
+        android:textColor="@color/color_on_primary"
         app:strokeWidth="2dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,9 +71,9 @@
             app:layout_constraintEnd_toEndOf="@id/juegos_cuadro"
             app:layout_constraintStart_toEndOf="@+id/juegos_categorias"
             app:layout_constraintTop_toBottomOf="@+id/juegos_duracion"
-            app:backgroundTint="#007d87"
-            android:textColor="@color/black"
             app:strokeColor="@color/black"
+            android:backgroundTint="#00a7bf"
+            android:textColor="@color/color_on_primary"
             app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -85,16 +85,15 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/save"
             android:textAllCaps="true"
-            android:textColor="@color/black"
             android:textSize="12sp"
-
-            app:backgroundTint="#007d87"
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="@id/juegos_cuadro"
             app:layout_constraintEnd_toStartOf="@+id/juegos_modificar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/juegos_categorias"
             app:strokeColor="@color/black"
+            android:backgroundTint="#00a7bf"
+            android:textColor="@color/color_on_primary"
             app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -105,18 +104,17 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="modificar"
+            android:text="@string/modify"
             android:textAllCaps="true"
-            android:textColor="@color/black"
             android:textSize="12sp"
-            app:backgroundTint="#007d87"
-
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/juegos_guardar"
             app:layout_constraintTop_toBottomOf="@+id/juegos_categorias"
             app:strokeColor="@color/black"
+            android:backgroundTint="#00a7bf"
+            android:textColor="@color/color_on_primary"
             app:strokeWidth="2dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -126,8 +124,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="147dp"
-
-            android:hint="@string/categories"
             android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
@@ -143,6 +139,7 @@
 
             <EditText
                 android:id="@+id/juegos_categorias_in"
+                android:hint="@string/categories"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
@@ -164,7 +161,6 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="200dp"
             android:layout_marginBottom="5dp"
-            android:hint="@string/players"
             android:textColorHint="#B8cee0"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
@@ -180,6 +176,7 @@
 
             <EditText
                 android:id="@+id/juegos_jugadores_in"
+                android:hint="@string/players"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
@@ -202,7 +199,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
-            android:hint="@string/duration"
+
             android:textColorHint="@color/color_primary"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
@@ -218,6 +215,7 @@
 
             <EditText
                 android:id="@+id/juegos_duracion_in"
+                android:hint="@string/duration"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
@@ -264,6 +262,7 @@
 
         <ImageButton
             android:id="@+id/imageButton_editorial"
+            android:contentDescription="@string/ad_editorial"
             android:layout_width="58dp"
             android:layout_height="48dp"
             android:background="@android:color/transparent"
@@ -336,6 +335,7 @@
 
         <ImageView
             android:id="@+id/juegos_imagen"
+            android:contentDescription="@string/cover_image"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_marginBottom="10dp"
@@ -349,6 +349,7 @@
 
         <ImageButton
             android:id="@+id/imageButton_autor"
+            android:contentDescription="@string/ad_author"
             android:layout_width="53dp"
             android:layout_height="47dp"
             android:background="@android:color/transparent"
@@ -378,7 +379,7 @@
             android:contextClickable="true"
             app:backgroundTint="@color/white"
             app:cornerRadius="25dp"
-            android:drawableRight="@drawable/ic_fecha_volver"
+            android:drawableLeft="@drawable/ic_flecha_volv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/juegos_titulo"
             app:layout_constraintStart_toStartOf="parent"

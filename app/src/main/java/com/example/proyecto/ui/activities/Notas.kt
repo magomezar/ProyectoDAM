@@ -32,7 +32,7 @@ class Notas : AppCompatActivity(), notaListener {
         val nombreFicha = intent.extras?.get("nombre")
         binding.notasNombreJuego.setText(nombreFicha.toString())
 
-
+        //Cargas las notas del juego
         mJuego.juegoCompleto(nombreFicha.toString()).observe(this, {
             mJuego.mostrarNotasPorJuego(it.id).observe(this, {
                 rAdapter = RecyclerViewAdapterNota(it as MutableList<NotasPorJuego>, this)
@@ -74,8 +74,6 @@ class Notas : AppCompatActivity(), notaListener {
             }
             binding.notasFormularioIn.text?.clear()
         }
-
-
     }
 
     override fun clickNota(item: NotasPorJuego, position: Int) {
@@ -83,7 +81,6 @@ class Notas : AppCompatActivity(), notaListener {
             val mJuego = ViewModelProvider(this).get(JuegoViewModel::class.java)
             mJuego.borrarNotas(item.id)
             rAdapter.borrarNota(position)
-            //Snackbar.make(view, "Nota borrada", Snackbar.LENGTH_LONG).show()
         }
     }
 }
