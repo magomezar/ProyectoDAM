@@ -192,7 +192,6 @@ class Juegos : AppCompatActivity() {
             val jugadores = binding.juegosJugadoresIn.text.toString()
             val duracion = binding.juegosDuracionIn.text.toString()
             val categoria = binding.juegosCategoriasIn.text.toString()
-            //Log.d(TAG,portada)
 
             //Aviso campos vacios
             if (nombre.isBlank() || autor.isBlank() || editorial.isBlank() || jugadores.isBlank() || duracion.isBlank() || categoria.isBlank()) {
